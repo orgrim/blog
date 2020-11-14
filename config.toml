@@ -1,0 +1,47 @@
+baseURL = "https://www.orgrim.net/"
+languageCode = "fr"
+title = "code. grind. sleep."
+theme = ["hugo-notice", "anubis"]
+paginate = 10
+DefaultContentLanguage = "fr"
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[Author]
+  name = "Nicolas Thauvin"
+  website = "https://www.orgrim.net"
+  github = "orgrim"
+  gitlab = "orgrim"
+  twitter = "orgrim"
+  linkedin = "nthauvin"
+
+[params]
+  dateFormat = "2006-01-02"
+  style = "dark"
+  [params.customCSS]
+    url1 = "css/custom.css"
+    url2 = "css/syntax.css"
+
+[[menu.main]]
+    name = "Blog"
+    url = ""
+    weight = 1
+
+[[menu.main]]
+  name = "Categories"
+  url = "categories"
+  weight = 2
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 3
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    contentDir = "content/en"
+  [languages.fr]
+    languageName = "Français"
+    contentDir = "content/fr"
+

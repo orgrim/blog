@@ -1,0 +1,16 @@
+.container {
+    max-width: 64em;
+}
+
+pre {
+    color: #f8f8f2;
+    background-color: #272727;
+}
+
+p code, li code {
+    color: #c7254e;
+}
+
+.note {
+    font-size: 0.9em;
+}
