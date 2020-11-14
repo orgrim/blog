@@ -14,3 +14,7 @@ p code, li code {
 .note {
     font-size: 0.9em;
 }
+
+.copyright p {
+    font-size: 0.8em;
+}

@@ -7,15 +7,8 @@ DefaultContentLanguage = "fr"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
-[Author]
-  name = "Nicolas Thauvin"
-  website = "https://www.orgrim.net"
-  github = "orgrim"
-  gitlab = "orgrim"
-  twitter = "orgrim"
-  linkedin = "nthauvin"
-
 [params]
+  author = "Nicolas Thauvin"
   dateFormat = "2006-01-02"
   style = "dark"
   [params.customCSS]
@@ -36,6 +29,16 @@ pygmentsUseClasses = true
     name = "Tags"
     url = "tags"
     weight = 3
+
+
+[[menu.footer]]
+  name = "@orgrim"
+  title = "Twitter"
+  url = "https://twitter.com/orgrim"
+
+[[menu.footer]]
+  name = "github"
+  url = "https://github.com/orgrim"
 
 [languages]
   [languages.en]
