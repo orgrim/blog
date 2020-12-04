@@ -85,7 +85,7 @@ Now we can run the cluster provided.
 * Console 1:
 
 ```
-
+cd ~/dev/patroni
 etcd --data-dir=data/etcd --enable-v2=true
 ```
 
