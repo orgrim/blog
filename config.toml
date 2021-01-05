@@ -3,7 +3,7 @@ languageCode = "fr"
 title = "code. grind. sleep."
 theme = ["hugo-notice", "anubis"]
 paginate = 10
-DefaultContentLanguage = "fr"
+defaultContentLanguage = "fr"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
@@ -15,9 +15,17 @@ pygmentsUseClasses = true
     url1 = "css/custom.css"
     url2 = "css/syntax.css"
 
+  [[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/orgrim"
+
+  [[params.social]]
+    name = "github"
+    url = "https://github.com/orgrim"
+
 [[menu.main]]
     name = "Blog"
-    url = ""
+    url = "post"
     weight = 1
 
 [[menu.main]]
@@ -42,9 +50,10 @@ pygmentsUseClasses = true
 
 [languages]
   [languages.en]
+    languageCode = "en"
     languageName = "English"
     contentDir = "content/en"
   [languages.fr]
+    languageCode = "fr"
     languageName = "Français"
     contentDir = "content/fr"
-
