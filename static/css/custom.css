@@ -1,10 +1,15 @@
+body {
+    background-color: #000;
+}
+
 .container {
     max-width: 64em;
+    padding: 10px;
 }
 
 pre {
     color: #f8f8f2;
-    background-color: #272727;
+    background-color: #151515;
 }
 
 p code, li code {
