@@ -4,7 +4,3 @@
 [submodule "themes/hugo-notice"]
 	path = themes/hugo-notice
 	url = https://github.com/martignoni/hugo-notice.git
-[submodule "public"]
-	path = public
-	url = git@github.com:orgrim/orgrim.github.io.git
-	branch = main
