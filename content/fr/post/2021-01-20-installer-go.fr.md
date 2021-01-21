@@ -13,7 +13,7 @@ compilateur et suite d'outil à partir des packages de sa distribution,
 mais le plus simple pour avoir une version la plus à jour possible est
 d'utiliser les binaires compilés fournis sur le site officiel.
 
-Le version du package golang-go est trop ancienne dans Debian stable
+La version du package `golang-go` est trop ancienne dans Debian stable
 (1.11), je l'ai donc installé de la façon suivante.
 
 <!--more-->
