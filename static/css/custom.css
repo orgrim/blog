@@ -9,7 +9,11 @@ pre {
 }
 
 p code, li code {
-    color: #c7254e;
+    color: #2592c7;
+}
+
+li pre code {
+    color: #f8f8f2;
 }
 
 .note {
