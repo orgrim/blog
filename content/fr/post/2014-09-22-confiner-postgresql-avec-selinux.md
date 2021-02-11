@@ -8,7 +8,9 @@ tags:
 - selinux
 ---
 
-{{< notice note >}}Ce post est partiellement obsolète, avec le passage à systemd.{{< /notice >}}
+{{< notice note >}}Ce post est partiellement obsolète, avec le passage
+à systemd. Voir la [mise à jour]({{< relref
+"2021-02-11-postgresql-et-selinux" >}}).{{< /notice >}}
 
 J'avais déjà expérimenté un peu avec SELinux il y a deux ans sans
 aller trop loin, parce que j'entendais souvent la phrase "Si on veut
