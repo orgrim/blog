@@ -1,6 +1,5 @@
-.container {
-    max-width: 64em;
-    padding: 10px;
+:root {
+    --main-width: 1024px;
 }
 
 pre {

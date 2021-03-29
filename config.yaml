@@ -1,0 +1,83 @@
+baseURL: https://www.orgrim.net/
+languageCode: fr
+title: code. grind. sleep.
+theme:
+  - hugo-notice
+  - PaperMod
+paginate: 10
+defaultContentLanguage: fr
+pygmentsCodeFences: true
+pygmentsUseClasses: true
+
+author:
+  name: "Nicolas Thauvin"
+
+params:
+  env: production
+  dateFormat: "2006-01-02"
+  style: "dark"
+
+  ShowShareButtons: true
+  ShowReadingTime: true
+  
+  socialIcons: # optional
+    - name: twitter
+      url: https://twitter.com/orgrim
+    - name: github
+      url: https://github.com/orgrim
+    - name: linkedin
+      url: https://www.linkedin.com/in/nthauvin/
+
+  customCSS:
+    - css/custom.css
+    - css/syntax.css
+  assets:
+    disableHLJS: true
+
+markup:
+  highlight:
+    # anchorLineNos: true
+    codeFences: true
+    guessSyntax: true
+    lineNos: false
+    # noClasses: false
+    style: monokai
+
+languages:
+  en:
+    languageCode: en
+    languageName: English
+    contentDir: content/en
+    # homeInfoParams:
+    #   Title: Hi there wave
+    #   Content: Can be Info, links, about...
+    menu:
+      main:
+        - name: "Blog"
+          url: "post"
+          weight: 1
+        - name: "Categories"
+          url: "categories"
+          weight: 2
+        - name: "Tags"
+          url: "tags"
+          weight: 3
+
+  fr:
+    languageCode: "fr"
+    languageName: Français
+    contentDir: content/fr
+    # homeInfoParams:
+    #   Title: Bienvenue
+    #   Content: "De l'info, des liens, et tout..."
+    menu:
+      main:
+        - name: "Blog"
+          url: "post"
+          weight: 1
+        - name: "Catégories"
+          url: "categories"
+          weight: 2
+        - name: "Tags"
+          url: "tags"
+          weight: 3
