@@ -22,3 +22,7 @@ li pre code {
 .copyright p {
     font-size: 0.8em;
 }
+
+.post-content img {
+    margin: auto;
+}
