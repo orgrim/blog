@@ -18,7 +18,7 @@ ShowToc: true
 
 Patroni ne gère que le service PostgreSQL en pilotant la réplication. Il ne
 fournit volontairement aucun moyen d'accès pour les applications. Elles doivent
-pourtant déterminer quelle serveur PostgreSQL est accessible en écriture, pour
+pourtant déterminer quel serveur PostgreSQL est accessible en écriture, pour
 cela une solution est de placer une adresse IP supplémentaire sur ce serveur en
 écriture qui est déplacée automatique en cas de bascule.
 
@@ -60,7 +60,7 @@ script échoue et keepalived retire l'adresse IP virtuelle du serveur.
 
 ## Contraintes sur PostgreSQL
 
-Pour s'assurer que l'instance PostgreSQL écoute les connexions client sur
+Pour s'assurer que l'instance PostgreSQL écoute les connexions des clients sur
 l'adresse IP virtuelle, qu'elle soit montée ou non, le paramètre
 `listen_addresses` doit être configuré à la valeur `'*'`.
 
@@ -107,7 +107,7 @@ Tout d'abord, il faut définir un ensemble configuration dans la section
 global_defs { 
   router_id PG1
   enable_script_security
-  vrrp_iptables
+  # vrrp_iptables # pour keepalived 1.3
 }
 ```
 
@@ -123,7 +123,9 @@ Les paramètres sont les suivants :
   d'autres utilisateurs que `root`. Cette sécurité permet de se prémunir
   contre des attaques par escalade de privilèges ;
 * `vrrp_iptables` : ne pas configurer de règle de firewall pour l'adresse IP
-  virtuelle, cette fonctionnalité est inutile dans le contexte présent.
+  virtuelle, cette fonctionnalité est inutile dans le contexte présent. Il faut
+  spécifier ce paramètre sans valeur pour désactiver la fonctionnalité pour les
+  versions plus anciennes de keepalived (1.3 sur CentOS 7)
 
 Pour interroger l'API REST de Patroni avec `curl`, il faut définir la ligne de
 commande de vérification dans une section `vrrp_script` :
@@ -141,8 +143,8 @@ La ligne de commande exécute une requête sur la ressource `/primary` du nœud
 * L'adresse IP ou nom du service et le port TCP doivent correspondre à la
   valeur du paramètre `restapi.listen` de Patroni, elle dépend de chaque nœud ;
 * Keepalived étant exécuté en tant que root, la configuration par défaut de
-  SELinux impose que les commandes qu'il déclenche soient aussi exécutées avec
-  l'utilisateur `root`.
+  SELinux sur RHEL/CentOS impose que les commandes qu'il déclenche soient aussi
+  exécutées avec l'utilisateur `root`.
 
 Enfin, il faut définir la configuration de l'adresse IP virtuelle avec une
 section `vrrp_instance` :
@@ -177,7 +179,7 @@ Voici le détail :
   paramètre perd sa valeur dès lors que l'exécution de la commande de
   vérification commence et que d'autres nœuds sont activés. Seul le nœud
   hébergeant l'instance en écriture peut monter l'adresse IP virtuelle ;
-* `interface` : le nom de l'interface utilisée par le protocole VRRP ;
+* `interface` : le nom de l'interface réseau utilisée par le protocole VRRP ;
 * `unicast_peer` : pour éviter tout effet de bord, l'utilisation du multicast
   pour communiquer avec les autres nœuds du cluster est désactivée au profit de
   l'unicast. Il est alors nécessaire de déclarer les autres nœuds du cluster
@@ -226,7 +228,7 @@ La syntaxe est la suivante : `notify_xxx <STRING>|<QUOTED-STRING> [username
 
 ## Fichier de configuration complet
 
-Voici le fichier de configuration finale, pour le premier nœud du cluster :
+Voici le fichier de configuration final, pour le premier nœud du cluster :
 
 ```
 global_defs {
@@ -272,13 +274,12 @@ Les éléments suivants doivent être adaptés sur les autres nœuds :
 
 * la valeur de `router_id` ;
 * l'URL du web service Patroni ;
-* la liste des autres nœuds unicast ;
-* le mot de passe de l'authentification du route VRRP ;
-* l'addresse IP virtuelle
+* la liste des autres nœuds dans `unicast_peer` ;
+* le mot de passe de l'authentification de l'instance VRRP ;
 
 ## Inconvénient
 
 Si cette méthode ayant l'avantage d'être facile à mettre en œuvre, le fait
-d'avoir en permanence des échecs du script de vérification de service primaire
+d'avoir en permanence des échecs du script de vérification du service primaire
 sur les nœuds en lecture seule fait qu'on a des messages de logs toutes les
 secondes, pour un comportement normal.
