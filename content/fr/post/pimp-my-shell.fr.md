@@ -102,7 +102,7 @@ sudo apt-get -f install
 ```
 
 ```
-alias lsd='ls'
+alias ls='lsd'
 ```
 
 ### splatmoji
@@ -145,6 +145,14 @@ Pour avoir la météo locale :
 
 ```
 alias meteo='curl wttr.in/${ville}'
+```
+
+### cal
+
+Pour avoir des semaines qui commencent le lundi avec `cal` :
+
+```
+alias cal='ncal -Mb'
 ```
 
 ### du et numfmt
